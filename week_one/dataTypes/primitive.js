@@ -57,7 +57,7 @@ let obj ={
     id :symbol_key,
     value: "fhkjd"
 }
-console.log( obj, ) ;
+console.log( obj ) ;
 
 // 7. BigInt: Represents very large integers
 let big_int_a = 1234567890123456789012345678901234567890n;

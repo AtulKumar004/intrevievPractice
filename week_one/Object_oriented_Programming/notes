@@ -1,0 +1,168 @@
+### 1. Objects and Prototypes
+
+#### Object Creation and Manipulation
+**What is this?**
+Objects in JavaScript are collections of key-value pairs. They can store various types of data and functions.
+
+**Why we use it?**
+
+Objects are used to group related data and functions, making code more organized and easier to manage.
+
+**When they are useful?**
+Objects are useful when you need to represent real-world entities with properties and behaviors.
+
+**Code Example:**
+```javascript
+// Object creation
+let person = {
+    name: "John",
+    age: 30,
+    greet: function() {
+        console.log("Hello, " + this.name);
+    }
+};
+
+// Object manipulation
+person.name = "Jane";
+person.greet(); // Output: Hello, Jane
+```
+
+#### Prototype Chain
+**What is this?**
+The prototype chain is a mechanism by which JavaScript objects inherit properties and methods from other objects.
+
+**Why we use it?**
+It allows for efficient code reuse and inheritance, enabling objects to share common functionality.
+
+**When they are useful?**
+The prototype chain is useful when you want to create multiple objects that share common properties or methods.
+
+**Code Example:**
+```javascript
+// Prototype chain
+function Animal(name) {
+    this.name = name;
+}
+
+Animal.prototype.speak = function() {
+    console.log(this.name + " makes a noise.");
+};
+
+let dog = new Animal("Dog");
+dog.speak(); // Output: Dog makes a noise.
+```
+
+#### Inheritance in JavaScript
+**What is this?**
+Inheritance in JavaScript allows one object to inherit properties and methods from another object.
+
+**Why we use it?**
+It promotes code reuse and helps in creating hierarchical relationships between objects.
+
+**When they are useful?**
+Inheritance is useful when you have a base object with common properties and methods that other objects can extend.
+
+**Code Example:**
+```javascript
+// Inheritance
+function Animal(name) {
+    this.name = name;
+}
+
+Animal.prototype.speak = function() {
+    console.log(this.name + " makes a noise.");
+};
+
+function Dog(name, breed) {
+    Animal.call(this, name);
+    this.breed = breed;
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+Dog.prototype.bark = function() {
+    console.log(this.name + " barks.");
+};
+
+let myDog = new Dog("Rex", "German Shepherd");
+myDog.speak(); // Output: Rex makes a noise.
+myDog.bark();  // Output: Rex barks.
+```
+
+### 2. ES6 Classes
+
+#### Class Syntax
+**What is this?**
+ES6 introduced a new syntax for creating objects and handling inheritance, known as classes.
+
+**Why we use it?**
+Classes provide a clearer and more concise syntax for creating objects and handling inheritance.
+
+**When they are useful?**
+Classes are useful when you want to create multiple instances of an object with shared properties and methods.
+
+**Code Example:**
+```javascript
+// Class syntax
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    }
+}
+
+let person1 = new Person("Alice", 25);
+person1.greet(); // Output: Hello, my name is Alice and I am 25 years old.
+```
+
+#### Constructor, Methods, Inheritance
+**What is this?**
+- **Constructor**: A special method for creating and initializing an object created with a class.
+- **Methods**: Functions defined within a class.
+- **Inheritance**: A mechanism to create a new class that extends an existing class.
+
+**Why we use it?**
+- **Constructor**: To initialize object properties.
+- **Methods**: To define behaviors of the object.
+- **Inheritance**: To create a new class with additional or modified functionality.
+
+**When they are useful?**
+- **Constructor**: Useful when you need to set initial values for object properties.
+- **Methods**: Useful for defining actions that objects can perform.
+- **Inheritance**: Useful for extending existing classes to create more specific types.
+
+**Code Example:**
+```javascript
+// Constructor, methods, inheritance
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(`${this.name} makes a noise.`);
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name);
+        this.breed = breed;
+    }
+
+    bark() {
+        console.log(`${this.name} barks.`);
+    }
+}
+
+let myDog = new Dog("Rex", "German Shepherd");
+myDog.speak(); // Output: Rex makes a noise.
+myDog.bark();  // Output: Rex barks.
+```
+
+These concepts form the foundation of object-oriented programming in JavaScript, enabling developers to write more modular, reusable, and maintainable code.
